@@ -1,1 +1,4 @@
-$('.datetimepicker').datetimepicker();
+$(document).ready(function () {
+    $("#datetimepicker").datetimepicker();
+
+})
