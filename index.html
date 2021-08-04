@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>군전역 계산기</title>
+</head>
+
+<body>
+    
+    <div class="header">
+        <span class="headerTitle">군전역 계산기</span>
+    </div>
+    <div class="selectArmy">
+        <div class="btnGroup1">
+            <button class="armyBtn">육군</button>
+            <button class="armyBtn">공군</button>
+            <button class="armyBtn">해군</button>
+            <button class="armyBtn">해병대</button>
+        </div>
+        <div class="btnGroup2">
+            <button class="armyBtn">의경(해경)</button>
+            <button class="armyBtn">소방원</button>
+            <button class="armyBtn">사회복무요원</button>
+        </div>
+    </div>
+    <div class="selectDate">
+        <button class="selectDateBtn">입대일</button>
+        <input id="datetimepicker" type="text" >
+        <span class="showDate"></span>
+    </div>
+    <div class="showDateTable">
+        <table>
+            <tr>
+                <td class="resultDate">전역일</td>
+                <td class="result">asd</td>
+            </tr>
+            <tr>
+                <td class="resultDate">총 복무일</td>
+                <td class="result">asd</td>
+            </tr>
+            <tr>
+                <td class="resultDate">남은 복무일</td>
+                <td class="result">asd</td>
+            </tr>
+            <tr>
+                <td class="resultDate">진도율</td>
+                <td class="result">
+                    <progress value="50" max="100"></progress>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" src="calculator.js"></script>
+</body>
+
+<link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/ >
+<script src="/jquery.js"></script>
+<script src="/build/jquery.datetimepicker.full.min.js"></script>
+
+</html>
