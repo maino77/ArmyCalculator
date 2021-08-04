@@ -31,8 +31,7 @@
         </div>
     </div>
     <div class="selectDate">
-        <button class="selectDateBtn">입대일</button>
-        <input id="datetimepicker" type="text">
+        <button class="selectDateBtn" id="datetimepicker">입대일</button>
         <span class="showDate"></span>
     </div>
     <div class="showDateTable">
@@ -66,6 +65,8 @@
 <script src="./build/jquery.datetimepicker.full.min.js"></script>
 <script type="text/javascript" src="./calculator.js"></script>
 
-
+<script>
+    $("#datetimepicker").datetimepicker();
+</script>
 
 </html>
