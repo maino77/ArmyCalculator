@@ -1,7 +1,6 @@
 var armyBtn = document.getElementsByClassName("armyBtn");
 var selectDateBtn = document.getElementsByClassName("selectDateBtn");
 
-
 function handleClick(event) {
 
 
@@ -22,3 +21,13 @@ function init() {
 }
 
 init();
+
+
+
+var 육군 = "18개월"
+var 해군 = "20개월"
+var 공군 = "22개월"
+var 해병대 = "18개월"
+var 사회복무요원 = "21개월"
+var 의경해경 = "18개월"
+var 소방원 = "20개월"
