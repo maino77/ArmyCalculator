@@ -68,7 +68,7 @@
                 buttonText: "Select date",
                 onSelect: function (dateText, inst) {
                     var date = $(this).val();
-                    $(".showDate").val(date);
+                    $(".showDate").empty().text(date);
                 }
             });
         })
