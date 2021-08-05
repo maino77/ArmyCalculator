@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="selectDate">
-        <button class="selectDateBtn" id="datepicker">입대일</button>
+        <input type="hidden" class="selectDateBtn" id="datepicker">
         <span class="showDate"></span>
     </div>
     <div class="showDateTable">
@@ -63,9 +63,7 @@
         $(document).ready(function () {
             $("#datepicker").datepicker({
                 showOn: "button",
-                buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-                buttonImageOnly: true,
-                buttonText: "Select date",
+                buttonText: "입대일",
                 onSelect: function (dateText, inst) {
                     var date = $(this).val();
                     $(".showDate").empty().text(date);
