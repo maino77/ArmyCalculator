@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title>군전역 계산기</title>
 </head>
 
@@ -31,7 +33,7 @@
         </div>
     </div>
     <div class="selectDate">
-        <button class="selectDateBtn" id="datetimepicker">입대일</button>
+        <button class="selectDateBtn" id="datepicker">입대일</button>
         <span class="showDate"></span>
     </div>
     <div class="showDateTable">
@@ -57,16 +59,22 @@
         </table>
     </div>
 
+    <script>
+        $(document).ready(function () {
+            $("#datepicker").datepicker({
+                showOn: "button",
+                buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+                buttonImageOnly: true,
+                buttonText: "Select date",
+                onSelect: function (dateText, inst) {
+                    var date = $(this).val();
+                    $(".showDate").val(date);
+                }
+            });
+        })
+    </script>
+
 </body>
-
-<script src="./jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css" />
-<script src="./jquery.js"></script>
-<script src="./build/jquery.datetimepicker.full.min.js"></script>
 <script type="text/javascript" src="./calculator.js"></script>
-
-<script>
-    $("#datetimepicker").datetimepicker();
-</script>
 
 </html>
