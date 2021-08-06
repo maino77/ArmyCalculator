@@ -67,6 +67,11 @@
                 buttonText: "입대일",
                 onSelect: function (dateText, inst) {
                     var date = $(this).val();
+                    var arr = date.split("-");
+                    var year = arr[0];
+                    var month = arr[1];
+                    var day = arr[2];
+                    
                     $(".showDate").empty().text(date);
                 }
             });
