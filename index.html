@@ -21,15 +21,15 @@
     </div>
     <div class="selectArmy">
         <div class="btnGroup1">
-            <button class="armyBtn">육군</button>
-            <button class="armyBtn">공군</button>
-            <button class="armyBtn">해군</button>
-            <button class="armyBtn">해병대</button>
+            <button class="armyBtn" value="1">육군</button>
+            <button class="armyBtn" value="2">공군</button>
+            <button class="armyBtn" value="3">해군</button>
+            <button class="armyBtn" value="4">해병대</button>
         </div>
         <div class="btnGroup2">
-            <button class="armyBtn">의경(해경)</button>
-            <button class="armyBtn">소방원</button>
-            <button class="armyBtn">사회복무요원</button>
+            <button class="armyBtn" value="5">의경(해경)</button>
+            <button class="armyBtn" value="6">소방원</button>
+            <button class="armyBtn" value="7">사회복무요원</button>
         </div>
     </div>
     <div class="selectDate">
@@ -61,19 +61,19 @@
 
     <script>
         $(document).ready(function () {
+
             $("#datepicker").datepicker({
                 dateFormat: 'yy-mm-dd',
                 showOn: "button",
                 buttonText: "입대일",
                 onSelect: function (dateText, inst) {
                     var date = $(this).val();
-                    var arr = date.split("-");
-                    var year = arr[0];
-                    var month = arr[1];
-                    var day = arr[2];
-                    
                     $(".showDate").empty().text(date);
                 }
+            });
+
+            $(".armyBtn").click(function () {
+                console.log($(this).attr('value'));
             });
         })
     </script>
