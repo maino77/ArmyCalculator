@@ -2,20 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <title>군전역 계산기</title>
 </head>
 
 <body>
-
     <div class="header">
         <span class="headerTitle">군전역 계산기</span>
     </div>
@@ -33,110 +32,83 @@
         </div>
     </div>
     <div class="selectDate">
-        <input type="hidden" class="selectDateBtn" id="datepicker">
+        <input type="hidden" class="selectDateBtn" id="datepicker" />
         <span class="showDate"></span>
     </div>
     <div class="showDateTable">
         <table>
             <tr>
                 <td class="resultDate">전역일</td>
-                <td class="result">asd</td>
+                <td class="result" id="discharge">asd</td>
             </tr>
             <tr>
                 <td class="resultDate">총 복무일</td>
-                <td class="result">asd</td>
+                <td class="result" id="allDay">asd</td>
             </tr>
             <tr>
                 <td class="resultDate">남은 복무일</td>
-                <td class="result">asd</td>
+                <td class="result" id="dayLeft">asd</td>
             </tr>
             <tr>
                 <td class="resultDate">진도율</td>
                 <td class="result">
-                    <progress value="50" max="100"></progress>
+                    <progress id="progress" value="50" max="100"></progress>
                 </td>
             </tr>
         </table>
     </div>
 
     <script>
+        /* var변수를 let으로 바꾼 이유:
+        https://velog.io/@bathingape/JavaScript-var-let-const-%EC%B0%A8%EC%9D%B4%EC%A0%90
+                 */
         $(document).ready(function () {
             $("#datepicker").datepicker({
-                dateFormat: 'yy-mm-dd',
+                dateFormat: "yy-mm-dd",
                 showOn: "button",
                 buttonText: "입대일",
                 onSelect: function (dateText, inst) {
-                    var date = $(this).val();
-                    var arr = date.split("-");
-                    var year = parseInt(arr[0]);
-                    var month = parseInt(arr[1]);
-                    var days = parseInt(arr[2]);
+                    const targetText = getSelected(); // calculator.js에서 선언
 
-                    let army = "육군";
-                    $(".armyBtn").on("click", function () {
-                        army = this.attr("value");
-                    })
+                    if (targetText === "") {
+                        alert("먼저 종류를 선택하여 주세요.");
+                        return;
+                    }
 
-                    $(".armyBtn").click(function () {
-                        switch (army) {
-                            case "육군":
-                                [...$("result")].forEach(function (item) {
-                                    var result = date.setDay(date.getDay() + 545);
-                                    item.innerText = result;
-                                    break;
-                                });
+                    // jQueryUI getDate함수 API문서: https://api.jqueryui.com/datepicker/#method-getDate
+                    // javascript Date 클래스: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date
+                    const date = $("#datepicker").datepicker("getDate");
 
-                            case "공군":
-                                [...$("result")].forEach(function (item) {
-                                    var result = date.setDay(date.getDay() + 637);
-                                    item.innerText = result;
-                                    break;
-                                });
+                    $(".showDate").text(
+                        `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}` // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals
+                    );
 
-                            case "해군":
-                                [...$("result")].forEach(function (item) {
-                                    var result = date.setDay(date.getDay() + 606);
-                                    item.innerText = result;
-                                    break;
-                                });
+                    const list = [
+                        { name: "육군", day: 545 },
+                        { name: "공군", day: 637 },
+                        { name: "해군", day: 606 },
+                        { name: "해병대", day: 545 },
+                        { name: "의경(해경)", day: 606 },
+                        { name: "소방원", day: 606 },
+                        { name: "사회복무요원", day: 730 },
+                    ];
+                    const day = list.filter((item) => item.name === targetText)[0].day;
 
-                            case "해병대":
-                                [...$("result")].forEach(function (item) {
-                                    var result = date.setDay(date.getDay() + 545);
-                                    item.innerText = result;
-                                    break;
-                                });
+                    date.setDate(day);
 
-                            case "의경(해경)":
-                                [...$("result")].forEach(function (item) {
-                                    var result = date.setDay(date.getDay() + 606);
-                                    item.innerText = result;
-                                    break;
-                                });
-
-                            case "소방원":
-                                [...$("result")].forEach(function (item) {
-                                    var result = date.setDay(date.getDay() + 606);
-                                    item.innerText = result;
-                                    break;
-                                });
-
-                            case "사회복무요원":
-                                [...$("result")].forEach(function (item) {
-                                    var result = date.setDay(date.getDay() + 730);
-                                    item.innerText = result;
-                                    break;
-                                });
-                        }
-                        console.log($(this).attr('value'));
-                    });
-                    $(".showDate").empty().text(date);
-                }
+                    $("#discharge").text(
+                        `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+                    );
+                    $("#allDay").text(day);
+                    // calculator.js에서 선언, 전역일과 현재일을 파라미터로
+                    const dayLeft = dayBetweenDate(date, new Date());
+                    $("#dayLeft").text(dayLeft);
+                    $("#progress").attr("value", day - dayLeft);
+                    $("#progress").attr("max", day);
+                },
             });
-
-        })
+        });
     </script>
-
 </body>
 <script type="text/javascript" src="./calculator.js"></script>
 
