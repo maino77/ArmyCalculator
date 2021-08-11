@@ -68,46 +68,72 @@
                 onSelect: function (dateText, inst) {
                     var date = $(this).val();
                     var arr = date.split("-");
-                    var year = arr[0];
-                    var month = arr[1];
-                    var days = arr[2];
+                    var year = parseInt(arr[0]);
+                    var month = parseInt(arr[1]);
+                    var days = parseInt(arr[2]);
+
+                    let army = "육군";
+                    $(".armyBtn").on("click", function () {
+                        army = this.attr("value");
+                    })
 
                     $(".armyBtn").click(function () {
-                        switch ($(".armyBtn").value) {
+                        switch (army) {
                             case "육군":
-                                var result = date.setDay(date.getDay + 545);
-                                $(".result").text(result);
-                                break;
+                                [...$("result")].forEach(function (item) {
+                                    var result = date.setDay(date.getDay() + 545);
+                                    item.innerText = result;
+                                    break;
+                                });
+
                             case "공군":
-                                var result = date.setDay(date.getDay + 637);
-                                $(".result").text(result);
-                                break;
+                                [...$("result")].forEach(function (item) {
+                                    var result = date.setDay(date.getDay() + 637);
+                                    item.innerText = result;
+                                    break;
+                                });
+
                             case "해군":
-                                var result = date.setDay(date.getDay + 606);
-                                $(".result").text(result);
-                                break;
+                                [...$("result")].forEach(function (item) {
+                                    var result = date.setDay(date.getDay() + 606);
+                                    item.innerText = result;
+                                    break;
+                                });
+
                             case "해병대":
-                                var result = date.setDay(date.getDay + 545);
-                                $(".result").text(result);
-                                break;
+                                [...$("result")].forEach(function (item) {
+                                    var result = date.setDay(date.getDay() + 545);
+                                    item.innerText = result;
+                                    break;
+                                });
+
                             case "의경(해경)":
-                                var result = date.setDay(date.getDay + 606);
-                                $(".result").text(result);
-                                break;
+                                [...$("result")].forEach(function (item) {
+                                    var result = date.setDay(date.getDay() + 606);
+                                    item.innerText = result;
+                                    break;
+                                });
+
                             case "소방원":
-                                var result = date.setDay(date.getDay + 606);
-                                $(".result").text(result);
-                                break;
+                                [...$("result")].forEach(function (item) {
+                                    var result = date.setDay(date.getDay() + 606);
+                                    item.innerText = result;
+                                    break;
+                                });
+
                             case "사회복무요원":
-                                var result = date.setDay(date.getDay + 730);
-                                $(".result").text(result);
-                                break;
+                                [...$("result")].forEach(function (item) {
+                                    var result = date.setDay(date.getDay() + 730);
+                                    item.innerText = result;
+                                    break;
+                                });
                         }
                         console.log($(this).attr('value'));
                     });
                     $(".showDate").empty().text(date);
                 }
             });
+
         })
     </script>
 
