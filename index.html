@@ -61,7 +61,6 @@
 
     <script>
         $(document).ready(function () {
-
             $("#datepicker").datepicker({
                 dateFormat: 'yy-mm-dd',
                 showOn: "button",
@@ -73,44 +72,41 @@
                     var month = arr[1];
                     var days = arr[2];
 
+                    $(".armyBtn").click(function () {
+                        switch ($(".armyBtn").value) {
+                            case "육군":
+                                var result = date.setDay(date.getDay + 545);
+                                $(".result").text(result);
+                                break;
+                            case "공군":
+                                var result = date.setDay(date.getDay + 637);
+                                $(".result").text(result);
+                                break;
+                            case "해군":
+                                var result = date.setDay(date.getDay + 606);
+                                $(".result").text(result);
+                                break;
+                            case "해병대":
+                                var result = date.setDay(date.getDay + 545);
+                                $(".result").text(result);
+                                break;
+                            case "의경(해경)":
+                                var result = date.setDay(date.getDay + 606);
+                                $(".result").text(result);
+                                break;
+                            case "소방원":
+                                var result = date.setDay(date.getDay + 606);
+                                $(".result").text(result);
+                                break;
+                            case "사회복무요원":
+                                var result = date.setDay(date.getDay + 730);
+                                $(".result").text(result);
+                                break;
+                        }
+                        console.log($(this).attr('value'));
+                    });
                     $(".showDate").empty().text(date);
                 }
-            });
-
-            $(".armyBtn").click(function () {
-                switch ($(".armyBtn").value) {
-                    case "육군":
-                        var result = date.setDay(date.getDay + 545);
-                        $(".result").text(result);
-                        break;
-                    case "공군":
-                        var result = date.setDay(date.getDay + 637);
-                        $(".result").text(result);
-                        break;
-                    case "해군":
-                        var result = date.setDay(date.getDay + 606);
-                        $(".result").text(result);
-                        break;
-                    case "해병대":
-                        var result = date.setDay(date.getDay + 545);
-                        $(".result").text(result);
-                        break;
-                    case "의경(해경)":
-                        var result = date.setDay(date.getDay + 606);
-                        $(".result").text(result);
-                        break;
-                    case "소방원":
-                        var result = date.setDay(date.getDay + 606);
-                        $(".result").text(result);
-                        break;
-                    case "사회복무요원":
-                        var result = date.setDay(date.getDay + 730);
-                        $(".result").text(result);
-                        break;
-                }
-
-
-                console.log($(this).attr('value'));
             });
         })
     </script>
