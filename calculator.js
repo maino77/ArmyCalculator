@@ -34,11 +34,3 @@ function dayBetweenDate(date1, date2) {
 }
 
 init();
-
-// var 육군 = "18개월 = 1 year 6 month"
-// var 해군 = "20개월 = 1 year 8 month"
-// var 공군 = "22개월 = 1 year 10 month"
-// var 해병대 = "18개월 = 1 year 6 month"
-// var 사회복무요원 = "21개월 = 1 year 9 month"
-// var 의경해경 = "18개월 = 1 year 6 month"
-// var 소방원 = "20개월 = 1 year 8 month"
