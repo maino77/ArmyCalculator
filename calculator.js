@@ -15,7 +15,9 @@ function handleClick(event) {
 // army 버튼 목록 중, clicked가 달린 버튼을 찾아내어서 그 버튼의 text값을 리턴함.
 function getSelected() {
     for (let item of armyBtn) // for of 구문에 관한 문서: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of
-        if (item.className.includes("clicked")) return item.value;
+        if (item.className.includes("clicked")) {
+            return item.value;
+        }
     return "";
 }
 
