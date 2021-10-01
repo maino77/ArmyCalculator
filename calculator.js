@@ -3,7 +3,7 @@ function handleClick(event) {
     if (event.target.classList[1] === "clicked") {
         event.target.classList.remove("clicked");
         armyBtn.style.backgroundColor = "#E2E2E2";
-        armyBtn.style.color = "black";
+        // armyBtn.style.color = "black";
     } else {
         for (let i = 0; i < armyBtn.length; i++) {
             armyBtn[i].classList.remove("clicked");

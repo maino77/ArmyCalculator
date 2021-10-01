@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
     <title>군전역 계산기</title>
 </head>
 
@@ -32,8 +33,9 @@
         </div>
     </div>
     <div class="selectDate">
-        <input type="hidden" class="selectDateBtn" id="datepicker" />
-        <span class="showDate"></span>
+        <span class="showDate">
+            <input type="hidden" class="selectDateBtn" id="datepicker"/>
+        </span>
     </div>
     <div class="showDateTable">
         <table>
@@ -62,6 +64,8 @@
         /* var변수를 let으로 바꾼 이유:
         https://velog.io/@bathingape/JavaScript-var-let-const-%EC%B0%A8%EC%9D%B4%EC%A0%90
                  */
+
+        
         $(document).ready(function () {
             $("#datepicker").datepicker({
                 dateFormat: "yy-mm-dd",
@@ -106,6 +110,7 @@
                     $("#progress").attr("value", day - dayLeft);
                     $("#progress").attr("max", day);
                 },
+                
             });
         });
     </script>
